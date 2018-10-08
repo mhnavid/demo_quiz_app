@@ -11,5 +11,18 @@ class Quiz{
 
   List<Question> get questions => _questions;
   int get length => _questions.length;
+  int get questionNumber => _currentQuestionIndex;
   int get score => _score;
+
+  Question get nextQuestion{
+    _currentQuestionIndex++;
+    if(_currentQuestionIndex > length){
+      return null;
+    }
+    return _questions[_currentQuestionIndex];
+  }
+
+  void answer(bool isCorrect){
+    if(isCorrect) _score++;
+  }
 }
