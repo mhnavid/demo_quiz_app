@@ -18,8 +18,8 @@ class QuestionTextState extends State<QuestionText> with SingleTickerProviderSta
   @override
   void initState() {
     super.initState();
-    _fontSizeAnimationController = new AnimationController(duration: new Duration(microseconds: 500), vsync: this);
-    _fontSizeAnimation = new CurvedAnimation(parent: _fontSizeAnimationController, curve: Curves.linear);
+    _fontSizeAnimationController = new AnimationController(duration: new Duration(milliseconds: 2000), vsync: this);
+    _fontSizeAnimation = new CurvedAnimation(parent: _fontSizeAnimationController, curve: Curves.bounceInOut);
     _fontSizeAnimation.addListener(() => this.setState(() {}));
     _fontSizeAnimationController.forward();
   }
@@ -34,7 +34,7 @@ class QuestionTextState extends State<QuestionText> with SingleTickerProviderSta
         child: new Center(
           child: new Text(
             widget._questionNummber.toString() + ": " + widget._question,
-            style: new TextStyle(color: Colors.black54, fontSize: _fontSizeAnimation.value*15),
+            style: new TextStyle(color: Colors.black54, fontSize: _fontSizeAnimation.value*20),
           ),
         ),
       ),
