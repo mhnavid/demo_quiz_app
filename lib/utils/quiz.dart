@@ -14,7 +14,7 @@ class Quiz{
   int get questionNumber => _currentQuestionIndex;
   int get score => _score;
 
-  Question get nextQuestion{
+  Question get nextQuestion {
     _currentQuestionIndex++;
     if(_currentQuestionIndex > length){
       return null;
