@@ -18,7 +18,7 @@ class QuestionTextState extends State<QuestionText> with SingleTickerProviderSta
   @override
   void initState() {
     super.initState();
-    _fontSizeAnimationController = new AnimationController(duration: new Duration(milliseconds: 2000), vsync: this);
+    _fontSizeAnimationController = new AnimationController(duration: new Duration(milliseconds: 500), vsync: this);
     _fontSizeAnimation = new CurvedAnimation(parent: _fontSizeAnimationController, curve: Curves.bounceInOut);
     _fontSizeAnimation.addListener(() => this.setState(() {}));
     _fontSizeAnimationController.forward();
