@@ -5,6 +5,7 @@ import 'package:demo_quiz_app/utils/quiz.dart';
 import 'package:demo_quiz_app/ui/answer_button.dart';
 import 'package:demo_quiz_app/ui/question_text.dart';
 import 'package:demo_quiz_app/ui/correct_wrong_overlay.dart';
+import 'package:demo_quiz_app/pages/score_page.dart';
 
 class QuizPage extends StatefulWidget{
 
@@ -16,7 +17,10 @@ class QuizPageState extends State<QuizPage> {
 
   Question currentQuestion;
   Quiz quiz = new Quiz([
-
+    new Question("Elon Musk is human.", false),
+    new Question("Pizza is healthy", true),
+    new Question("Flutter is awesome", false),
+    new Question("This app is awesome", true)
   ]);
   String questionText;
   int questionNumber;
@@ -57,6 +61,10 @@ class QuizPageState extends State<QuizPage> {
         overlayShouldBeVisible == true ? new CorrectWrongOverlay (
             isCorrect,
             () {
+              if(quiz.length == questionNumber){
+                Navigator.of(context).pushAndRemoveUntil(new MaterialPageRoute(builder: (BuildContext context) => new ScorePage(quiz.score, quiz.length)), (Route route) => route = null);
+                return;
+              }
               currentQuestion = quiz.nextQuestion;
               this.setState(() {
                 overlayShouldBeVisible = false;

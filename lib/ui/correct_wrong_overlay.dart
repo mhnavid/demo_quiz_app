@@ -17,7 +17,6 @@ class CorrectWrongOverlayState extends State<CorrectWrongOverlay> with SingleTic
   Animation<double> _iconAnimation;
   AnimationController _iconAnimationController;
 
-
   @override
   void initState() {
     super.initState();
@@ -25,6 +24,13 @@ class CorrectWrongOverlayState extends State<CorrectWrongOverlay> with SingleTic
     _iconAnimation = new CurvedAnimation(parent: _iconAnimationController, curve: Curves.elasticInOut);
     _iconAnimation.addListener(() => this.setState(() {}));
     _iconAnimationController.forward();
+  }
+
+
+  @override
+  void dispose() {
+    _iconAnimationController.dispose();
+    super.dispose();
   }
 
   @override
